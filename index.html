@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UDT JSON Editor</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">UDT JSON Editor</div>
+    <label class="btn primary">Open JSON…<input type="file" id="fileInput" accept=".json,application/json" hidden></label>
+    <span id="fileName" class="muted"></span>
+    <span id="dirty" class="dirty" hidden>● unsaved changes</span>
+    <div class="spacer"></div>
+    <button id="undoBtn" class="btn" title="Ctrl+Z" disabled>Undo</button>
+    <button id="redoBtn" class="btn" title="Ctrl+Y" disabled>Redo</button>
+    <button id="csvBtn" class="btn" title="Export visible rows/columns of the current table" disabled>Export view CSV</button>
+    <button id="saveBtn" class="btn primary" title="Ctrl+S" disabled>Download JSON</button>
+  </header>
+
+  <div class="layout">
+    <nav id="sidebar" class="sidebar"></nav>
+    <main id="main" class="main">
+      <div class="dropzone">
+        <h2>Drop a .json file here</h2>
+        <p class="muted">or click <strong>Open JSON…</strong>. The file is processed locally in your browser.</p>
+      </div>
+    </main>
+  </div>
+
+  <div id="drawer" class="drawer" hidden>
+    <div class="drawer-head">
+      <strong id="drawerTitle"></strong>
+      <div class="spacer"></div>
+      <button id="drawerApply" class="btn primary">Apply</button>
+      <button id="drawerClose" class="btn">Close</button>
+    </div>
+    <textarea id="drawerText" spellcheck="false"></textarea>
+    <div id="drawerErr" class="err"></div>
+  </div>
+
+  <dialog id="bulkDlg" class="dlg"></dialog>
+  <div id="popup" class="popup" hidden></div>
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
